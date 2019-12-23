@@ -1,4 +1,5 @@
 from django.db import models
+import jsonfield
 
 
 class Category(models.Model):
@@ -51,6 +52,7 @@ class Product(models.Model):
     name = models.CharField(max_length=250, unique=True, help_text="The product name and is unique")
     brand = models.ForeignKey(Brand, help_text="The Brand the product belongs to", on_delete=models.CASCADE)
     category = models.ForeignKey(Category, help_text="The category the product belongs to", on_delete=models.CASCADE)
+    specification = jsonfield.JSONField()
     date_created = models.DateTimeField(auto_now_add=True, help_text="This is when it was created ")
     date_modified = models.DateTimeField(auto_now=True, help_text="This is when we modified")
 
@@ -59,17 +61,3 @@ class Product(models.Model):
         return self.name
 
 
-class Specification(models.Model):
-    """
-    Specification of the particular product which has a key, value and unit if exists.
-    """
-    key = models.CharField(max_length=250, help_text="The Key for the specification, e.g:height")
-    value = models.CharField(max_length=250, help_text="The value for the specification, e.g:30")
-    unit = models.CharField(max_length=250,null=True, blank=True, help_text="The unit for the specification, eg:cm")
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, help_text="The specification for the particular product")
-    date_created = models.DateTimeField(auto_now_add=True, help_text="This is when it was created ")
-    date_modified = models.DateTimeField(auto_now=True, help_text="This is when we modified")
-
-    def __str__(self):
-        """Returns the key, value and unit(if it exists)"""
-        return self.key+': '+self.value+(' '+self.unit if self.unit else ' ')

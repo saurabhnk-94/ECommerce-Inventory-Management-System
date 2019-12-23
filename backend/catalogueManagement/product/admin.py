@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import Category, Brand, Product, Specification
+from .models import Category, Brand, Product
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'brand', 'category', 'date_created', 'date_modified',)
+    list_display = ('name', 'brand', 'category', 'specification','date_created', 'date_modified',)
 
 @admin.register(Brand)
 class BrandAdmin(admin.ModelAdmin):
@@ -13,6 +13,3 @@ class BrandAdmin(admin.ModelAdmin):
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'parent_category' ,'date_created', 'date_modified',)
 
-@admin.register(Specification)
-class SpecificationAdmin(admin.ModelAdmin):
-    list_display = ('key', 'value', 'unit', 'product', 'date_created', 'date_modified',)

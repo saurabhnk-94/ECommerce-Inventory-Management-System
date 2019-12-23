@@ -5,9 +5,8 @@ from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework import status
 
-from .serializers import BrandSerializer, CategorySerializer, ProductSerializer, SpecificationSerializer
-from .models import Brand, Category, Product, Specification
-
+from .serializers import BrandSerializer, CategorySerializer, ProductSerializer
+from .models import Brand, Category, Product
 # Create your views here.
 
 
@@ -75,24 +74,3 @@ class ProductViewSet(viewsets.ViewSet):
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-
-class SpecificationViewSet(viewsets.ViewSet):
-    """To get all the list of Specifications"""
-    def list(self, request):
-        queryset = Specification.objects.all()
-        serializer = SpecificationSerializer(queryset, many=True)
-        return Response(serializer.data)
-
-    """To retrieve a particular data of specification"""
-    def retrieve(self, request, pk=None):
-        queryset= Specification.objects.all()
-        specification = get_object_or_404(queryset, pk=pk)
-        serializer = SpecificationSerializer(specification)
-        return Response(serializer.data)
-
-    """To create a new Specification"""
-    def create(self, request):
-        serializer = SpecificationSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
