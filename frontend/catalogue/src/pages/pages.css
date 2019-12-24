@@ -1,0 +1,28 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.brand-page {
+    display: flex;
+    width: 20%;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.items-list {
+    padding: 10px;
+    font-size: 20px;
+}
