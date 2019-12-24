@@ -15,8 +15,14 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class ProductSerializer(serializers.ModelSerializer):
-    # brand = BrandSerializer()
-    # category= CategorySerializer()
+    brand = BrandSerializer()
+    category= CategorySerializer()
+    specification = serializers.JSONField()
+    class Meta:
+        model= Product
+        fields = ['id', 'name', 'brand', 'category','specification']
+
+class ProductCreateSerializer(serializers.ModelSerializer):
     specification = serializers.JSONField()
     class Meta:
         model= Product

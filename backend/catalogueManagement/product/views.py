@@ -5,7 +5,7 @@ from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework import status
 
-from .serializers import BrandSerializer, CategorySerializer, ProductSerializer
+from .serializers import BrandSerializer, CategorySerializer, ProductSerializer, ProductCreateSerializer
 from .models import Brand, Category, Product
 # Create your views here.
 
@@ -69,7 +69,7 @@ class ProductViewSet(viewsets.ViewSet):
 
     """To create a new Product"""
     def create(self, request):
-        serializer = ProductSerializer(data=request.data)
+        serializer = ProductCreateSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
