@@ -26,3 +26,39 @@ tr:nth-child(even) {
     padding: 10px;
     font-size: 20px;
 }
+
+.createProduct {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    padding-top: 20px;
+    margin-top: 20px;
+    width: 50%;
+}
+
+.createProduct label {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+}
+
+.createProduct label input {
+    width: 300px;
+    height: 20px;
+}
+
+.specification {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.specification div {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+}
+
+.specification button {
+    width: 100px;
+}

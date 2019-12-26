@@ -31,11 +31,6 @@ class App extends Component {
               </Link>
             </div>
           </div>
-          {/* <div className="body-items">
-              <Brand className="body-left"/>
-              <Home className="body-center"/>
-              <Category className="body-right"/>
-          </div> */}
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/product" component={Product} />

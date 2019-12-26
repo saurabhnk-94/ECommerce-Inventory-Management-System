@@ -7,7 +7,7 @@ class Home extends React.Component {
     super(props);
     this.state = {
       productList: [],
-      particularProduct:[]
+      particularProduct:[],
     };
   }
 
@@ -71,7 +71,9 @@ class Home extends React.Component {
           </tbody>
         </table>
         {(this.state.particularProduct.name) ? (
+          
           <div className="particular-product">
+            {console.log(this.state.particularProduct)};
             <div className="product-detail">
                 {this.state.particularProduct.category.get_breadcrumbs}
               </div>
@@ -84,12 +86,11 @@ class Home extends React.Component {
               </div>
               <div className="product-detail">
                 Specification: {this.state.particularProduct.specification.map((items, index) => (
-                  <div className="product-detail">
-  <div> {items.key}:{items.value} {(items.unit)? (items.unit) : ("")}</div>
+                  <div className="product-detail" key={index} >
+                     <div> {items.key}:{items.value} {(items.unit)? (items.unit) : ("")}</div>
                 </div>
                 ))}
               </div>
-           
           </div>
         ) : (
           ""
