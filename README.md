@@ -1,4 +1,4 @@
-# catalogue
+# Catalogue Management System
 
 Users will be able to create a product. A product has parameters like Brand, Category and Specifications. Products can be viewed on a listing page with filters of Brand and Category.
 
